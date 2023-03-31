@@ -1,0 +1,58 @@
+linters-settings:
+  dupl:
+    threshold: 800
+  lll:
+    line-length: 400
+  gomnd:
+    checks:
+      - argument
+      - case
+      - condition
+      - return
+  gosec:
+    excludes:
+      - G404
+      - G101
+linters:
+  enable:
+    - errcheck
+    - dogsled
+    - exportloopref
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goprintffuncname
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - nolintlint
+    - staticcheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+    - depguard
+    - dupl
+    - goconst
+    - lll
+    - noctx
+    - gomnd
+    - gosec
+    - revive
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gomnd
+        - dupl
+        - goconst
+        - lll
+run:
+  timeout: 5m
+  go: "1.19"
+  modules-download-mode: readonly
+  skip-dirs:
+    - "pkg/mailer"

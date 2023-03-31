@@ -1,0 +1,86 @@
+basePath: /
+info:
+  contact:
+    email: developer@skilledin.io
+    name: API Support
+  description: "This is an auto-generated API Docs. To Using Private API \U0001F510
+    just hit endpoint AUTH > Login. We Are using cookie header no need copy token."
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Skilledin API Documentation
+  version: "1.0"
+paths:
+  /api/v1/green-skills:
+    get:
+      consumes:
+      - application/json
+      description: get green skill data list
+      parameters:
+      - description: 'Limit default: 10'
+        in: query
+        name: limit
+        type: integer
+      - description: 'Page default: 1'
+        in: query
+        name: page
+        type: integer
+      - description: Search data by title/name
+        in: query
+        name: search
+        type: string
+      - description: Filter by skill groups name
+        in: query
+        items:
+          type: string
+        name: groups
+        type: array
+      - description: Sort order by ratings default:none
+        enum:
+        - asc
+        - desc
+        in: query
+        name: sort_rate
+        type: string
+      - description: Sort order by transferability default:none, asc for low to high,
+          and desc for high to low
+        enum:
+        - asc
+        - desc
+        in: query
+        name: sort_trf
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: green skill list
+      tags:
+      - Green Skills
+  /api/v1/green-skills/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get green skill detail
+      parameters:
+      - description: green_skill_id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: green skill detail
+      tags:
+      - Green Skills
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
